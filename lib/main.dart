@@ -13,6 +13,17 @@ class XylophoneScreen extends StatelessWidget {
     player.play('note$noteId.wav');
   }
 
+  Expanded _makeKey({int noteId = 1, Color color = Colors.white}) {
+    return Expanded(
+      child: TextButton(
+        onPressed: () {
+          _playSound(noteId);
+        },
+        style: ButtonStyle(backgroundColor: MaterialStateProperty.all(color)),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,54 +32,16 @@ class XylophoneScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Expanded(
-              child: TextButton(
-                onPressed: () {
-                  _playSound(1);
-                },
-                style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.red)),
-              ),
+            _makeKey(
+              noteId: 1,
+              color: Colors.red,
             ),
-            Expanded(
-              child: TextButton(
-                onPressed: () {
-                  _playSound(2);
-                },
-                style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.orange)),
-              ),
-            ),
-            Expanded(
-              child: TextButton(
-                style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.yellow)),
-              ),
-            ),
-            Expanded(
-              child: TextButton(
-                style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.green)),
-              ),
-            ),
-            Expanded(
-              child: TextButton(
-                style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.teal)),
-              ),
-            ),
-            Expanded(
-              child: TextButton(
-                style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.blue)),
-              ),
-            ),
-            Expanded(
-              child: TextButton(
-                style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.purple)),
-              ),
-            ),
+            _makeKey(noteId: 2, color: Colors.orange),
+            _makeKey(noteId: 3, color: Colors.yellow),
+            _makeKey(noteId: 4, color: Colors.green),
+            _makeKey(noteId: 5, color: Colors.teal),
+            _makeKey(noteId: 6, color: Colors.blue),
+            _makeKey(noteId: 7, color: Colors.purple),
           ],
         ),
       ),
